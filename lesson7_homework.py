@@ -8,12 +8,6 @@ new_dict = {word: text.count(word) for word in text}
 print(new_dict)
 
 
-# new_dict = dict()
-# for word in user_input.split():
-#     new_dict[word] = new_dict.get(word, 0) + 1
-# print(new_dict)
-
-
 
 #Task.2 List comprehension exercise I
 
