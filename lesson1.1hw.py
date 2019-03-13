@@ -9,12 +9,12 @@ class Person:
 
 
     def talk(self):
-        print(f"Hello, my name is {self.firstname} {self.lastname} and I'm {self.age} years old")
+        return (f"Hello, my name is {self.firstname} {self.lastname} and I'm {self.age} years old")
 
 
 person1 = Person("Carl", "Johnsn", "26")
 
 
-person1.talk()
+print(person1.talk())
 
 
