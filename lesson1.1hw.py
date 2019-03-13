@@ -15,7 +15,6 @@ class Person:
 person1 = Person("Carl", "Johnsn", "26")
 
 
-print(person1.talk())
+person1.talk()
 
 
-# ?? unclear why get None as a result
