@@ -60,7 +60,8 @@ class CityInfo(object):
 def _main():
     weather_forecast = YahooWeatherForecast()
     for i in range(50):
-        city_info = CityInfo(input("City:\n"), input("Country:\n"), weather_forecast=weather_forecast)
+        city_info = CityInfo((input("City:\n")).lower(), (input("Country:\n")).lower(), weather_forecast=weather_forecast)
+
         forecast = city_info.weather_forecast()
         pprint.pprint(forecast)
 
