@@ -21,7 +21,6 @@ red = pygame.Color(255, 102, 102)
 green = pygame.Color(153, 255, 204)
 
 
-fps_controller = pygame.time.Clock()   #(frames per second) controller
 
 score = 0
 
@@ -58,15 +57,14 @@ class Play:
         game_over_rect.midtop = (display_height / 2, display_width / 4)
         display.fill(green)
         display.blit(game_over_surface, game_over_rect)
-        #show_score(0, red, 'times', 20)
+        self.show_score(0)
         pygame.display.flip()
         time.sleep(30)
         pygame.quit()
-        sys.exit()
 
     def show_score(self, choice=1):
         score_font = pygame.font.SysFont("times new roman", 16)
-        score_surface = score_font.render('Score : ' + str(score), True, blue)
+        score_surface = score_font.render('Score : {0}'.format(self.score), True, blue)
         score_rect = score_surface.get_rect()
         if choice == 1:
             score_rect.midtop = (display_height / 10, 15)
@@ -78,7 +76,7 @@ class Play:
 
     def refresh_screen_and_fps(self):
         pygame.display.flip()
-        game.fps_controller.tick(5)
+        game.fps_controller.tick(10)
 
 
 class Snake:
@@ -159,12 +157,6 @@ class Apple:
         pygame.draw.rect(display, white, pygame.Rect(self.apple_position[0],
                                                      self.apple_position[1], 10, 10))
 
-    # def draw(display, apple_position, apple):
-    #     display.blit(apple, (apple_position[0], apple_position[1]))
-
-
-
-
 
 
 
@@ -178,10 +170,8 @@ while True:
     snake.move()
     game.score, apple.apple_position = snake.grow_snake(game.score, apple.apple_position)
     snake.draw_snake()
-
     apple.draw_apple()
-
     snake.collisions(game.game_over)
-
     game.show_score()
     game.refresh_screen_and_fps()
+
